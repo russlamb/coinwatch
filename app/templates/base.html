@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>Coin Watch {{title}}</title>
+    {% else %}
+    <title>Welcome to Coin Watch</title>
+    {% endif %}
+</head>
+<body>
+    {% block content %}{% endblock%}
+</body>
+</html>

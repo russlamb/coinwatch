@@ -3,7 +3,7 @@ import json
 
 def print_json(input_text):
     jdata = json.loads(input_text)
-    print( json.dumps(jdata,indent=4,sort_keys=False))
+    print(json.dumps(jdata, indent=4, sort_keys=False))
 
 
 def value_search(mydict, search_value):
