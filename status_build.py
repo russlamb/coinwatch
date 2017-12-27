@@ -11,7 +11,7 @@ def usd_value(coin):
         return None
 
 
-def build_status():
+def build_status_old():
     status = []
     coins = ["ethereum", "bitcoin", "monacoin"]
     functions = {
@@ -23,6 +23,25 @@ def build_status():
     for c in coins:
         for f in functions:
             status.append(get_status("{} {}".format(c, f), functions[f](c)))
+    return status
+
+def build_status():
+    status = []
+    coins = ["ethereum", "bitcoin", "monacoin"]
+    functions = {
+        "balance": get_coin_balance,
+        "hashrate": get_hashrate,
+        "price": get_coin_price,
+        "USD value": usd_value
+    }
+    for c in coins:
+        coin_status = []
+        for f in functions:
+            coin_status.append(get_status("{}".format(f), functions[f](c)))
+        status.append({
+            "coin":c,
+            "state":coin_status
+        })
     return status
 
 

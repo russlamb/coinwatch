@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% for coin_state in display_status %}
+<h2>{{coin_state.coin}}</h2>
 <table>
     <tr>
         <th>
@@ -10,15 +13,16 @@
             Value
         </th>
     </tr>
-    {% for state in display_status %}
+    {% for i in coin_state.state %}
     <tr>
         <td>
-            {{ state.status }}
+            {{ i.status }}
         </td>
         <td>
-            {{ state.status_value }}
+            {{ i.status_value }}
         </td>
     </tr>
     {% endfor %}
 </table>
+{% endfor %}
 {% endblock %}
