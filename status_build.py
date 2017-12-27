@@ -46,7 +46,7 @@ def build_status():
         if c=="ethereum":
             wallet_balance=get_wallet_balance()
             coin_status.append(get_status("wallet balance", wallet_balance ))
-            coin_status.append(get_status("wallet USD", wallet_balance*get_coin_price(c)))
+            coin_status.append(get_status("wallet USD", round(wallet_balance*get_coin_price(c),2)))
 
         status.append({
             "coin":c,
