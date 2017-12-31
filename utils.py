@@ -66,11 +66,7 @@ def sleep_decorator(sleep_time):
     def real_decorator(func):
         def wrapper(*args, **kwargs):
             wait_time=get_time_to_wait(sleep_time).total_seconds()
-            if wait_time>0:
-                print("{} sleeping for {} seconds".format(datetime.now(),wait_time))
             sleep(wait_time)
-            if wait_time > 0:
-                print("{} done sleeping ".format(datetime.now()))
             result = func(*args, **kwargs)
             SleepCheck.last_call = datetime.now()
             return result

@@ -9,7 +9,7 @@ from utils import print_json, value_search, friendly_name_decorator, sleep_decor
 def get_api_key():
     return os.environ["APIKEY_MININGPOOLHUB"]
 
-@sleep_decorator(1000)
+@sleep_decorator(300)
 def call_api(action, coin_name=None, id=None):
     url = get_url(action, coin_name, id)
     r = requests.get(url, timeout=5000, verify=False)
