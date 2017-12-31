@@ -1,6 +1,7 @@
 from market_cap_api import get_coin_price
 from pool_api import get_coin_balance, get_hashrate
 from etherscan_api import get_wallet_balance
+from blockchain_api import get_wallet_balance as btc_balance
 from utils import print_json
 import json
 
@@ -37,7 +38,6 @@ def build_status():
         "USD value": usd_value
     }
 
-    one_offs={"ethereum":[]}
     for c in coins:
         coin_status = []
         for f in functions:
@@ -47,7 +47,10 @@ def build_status():
             wallet_balance=get_wallet_balance()
             coin_status.append(get_status("wallet balance", wallet_balance ))
             coin_status.append(get_status("wallet USD", round(wallet_balance*get_coin_price(c),2)))
-
+        if c=="bitcoin":
+            wallet_balance = btc_balance()
+            coin_status.append(get_status("wallet balance", wallet_balance))
+            coin_status.append(get_status("wallet USD", round(wallet_balance * get_coin_price(c), 2)))
         status.append({
             "coin":c,
             "state":coin_status
