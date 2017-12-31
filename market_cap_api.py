@@ -10,14 +10,14 @@ def get_url(limit=None):
     return url
 
 
-def call_api(limit=None):
+def call_api(limit=200):
     url = get_url(limit)
     r = requests.get(url)
     return r
 
 
 def print_cap_json():
-    print_json(call_api(10).text)
+    print_json(call_api(200).text)
 
 
 def get_coin_property(coin, property):
@@ -33,4 +33,6 @@ def get_coin_price(coin):
 if __name__ == "__main__":
     print(get_coin_price("bitcoin"))
     print(get_coin_price("ethereum"))
-    print_cap_json()
+    print(get_coin_price("monacoin"))
+    print(get_coin_price("zclassic"))
+    #print_cap_json()
