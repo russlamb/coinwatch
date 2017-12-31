@@ -16,7 +16,7 @@ def usd_value(coin):
 
 def build_status():
     status = []
-    coins = ["ethereum", "bitcoin", "monacoin"]
+    coins = ["ethereum", "bitcoin", "monacoin", "zclassic"]
     functions = {
         "balance": get_coin_balance,
         "hashrate": get_hashrate,
