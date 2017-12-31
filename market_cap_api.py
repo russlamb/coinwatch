@@ -31,5 +31,6 @@ def get_coin_price(coin):
 
 
 if __name__ == "__main__":
+    print(get_coin_price("bitcoin"))
     print(get_coin_price("ethereum"))
     print_cap_json()

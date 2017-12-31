@@ -2,7 +2,7 @@ from market_cap_api import get_coin_price
 from pool_api import get_coin_balance, get_hashrate
 from etherscan_api import get_wallet_balance
 from blockchain_api import get_wallet_balance as btc_balance
-from utils import print_json
+from utils import print_json, is_number
 import json
 
 def usd_value(coin):
@@ -16,7 +16,7 @@ def usd_value(coin):
 
 def build_status():
     status = []
-    coins = ["ethereum", "bitcoin", "monacoin", "zclassic"]
+    coins = ["ethereum", "bitcoin", "monacoin"]
     functions = {
         "balance": get_coin_balance,
         "hashrate": get_hashrate,
@@ -37,9 +37,10 @@ def build_status():
 
         if c=="bitcoin":
             wallet_balance = btc_balance()
-            if wallet_balance is not None:
+            coin_price = get_coin_price(c)
+            if wallet_balance is not None and is_number(coin_price):
                 coin_status.append(get_status("wallet balance", wallet_balance))
-                coin_status.append(get_status("wallet USD", round(wallet_balance * get_coin_price(c), 2)))
+                coin_status.append(get_status("wallet USD", round(wallet_balance * coin_price, 2)))
             else:
                 print("bitcoin balance result was {}".format(wallet_balance))
         status.append({
