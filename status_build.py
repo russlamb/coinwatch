@@ -14,20 +14,6 @@ def usd_value(coin):
         return None
 
 
-def build_status_old():
-    status = []
-    coins = ["ethereum", "bitcoin", "monacoin"]
-    functions = {
-        "balance": get_coin_balance,
-        "hashrate": get_hashrate,
-        "price": get_coin_price,
-        "USD value": usd_value
-    }
-    for c in coins:
-        for f in functions:
-            status.append(get_status("{} {}".format(c, f), functions[f](c)))
-    return status
-
 def build_status():
     status = []
     coins = ["ethereum", "bitcoin", "monacoin"]
@@ -42,11 +28,13 @@ def build_status():
         coin_status = []
         for f in functions:
             coin_status.append(get_status("{}".format(f), functions[f](c)))
+
         #call specific one off functions by coin
         if c=="ethereum":
             wallet_balance=get_wallet_balance()
             coin_status.append(get_status("wallet balance", wallet_balance ))
             coin_status.append(get_status("wallet USD", round(wallet_balance*get_coin_price(c),2)))
+
         if c=="bitcoin":
             wallet_balance = btc_balance()
             coin_status.append(get_status("wallet balance", wallet_balance))
