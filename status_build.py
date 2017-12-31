@@ -37,8 +37,11 @@ def build_status():
 
         if c=="bitcoin":
             wallet_balance = btc_balance()
-            coin_status.append(get_status("wallet balance", wallet_balance))
-            coin_status.append(get_status("wallet USD", round(wallet_balance * get_coin_price(c), 2)))
+            if wallet_balance is not None:
+                coin_status.append(get_status("wallet balance", wallet_balance))
+                coin_status.append(get_status("wallet USD", round(wallet_balance * get_coin_price(c), 2)))
+            else:
+                print("bitcoin balance result was {}".format(wallet_balance))
         status.append({
             "coin":c,
             "state":coin_status
