@@ -10,7 +10,7 @@ def get_address():
 
 def get_url(address, action):
     url = "https://blockchain.info/q/{}/{}".format(action,address)
-    #print(url)
+    print(url)
     return url
 
 def call_api(action="addressbalance"):
