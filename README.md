@@ -16,7 +16,7 @@ APIs Used
 |    API                  |    Purpose                                          |   |
 |-------------------------|-----------------------------------------------------|---|
 |    Blockchain.info      |    Bitcoin   wallet balance                         |   |
-|    Etherscan.io         |    Ehter   wallet balance                           |   |
+|    Etherscan.io         |    Ether   wallet balance                           |   |
 |    Coinmarketcap.com    |    Coin   prices                                    |   |
 |    Miningpoolhub.com    |    Mining   hash speeds and pool wallet balances    |   |
-|    Colindesk.com        |    Bitcoin   prices                                 |   |
+|    Coindesk.com         |    Bitcoin index  prices                            |   |
